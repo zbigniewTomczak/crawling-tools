@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -21,6 +20,9 @@ public class ResponseCodeTest {
 		String line = null;
 		boolean fail = false;
 		while ((line = reader.readLine()) != null) {
+			line = line.trim();
+			if (line.isEmpty()) continue;
+			if (line.charAt(0) == '#') continue;
 			String codeReturn = ResponseCode.responseCode(line);
 			if (! codeReturn.equals(codeOk)) {
 				System.out.format("%s %s", line, codeReturn);

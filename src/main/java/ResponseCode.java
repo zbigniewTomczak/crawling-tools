@@ -52,6 +52,7 @@ public class ResponseCode {
 				BufferedReader reader = new BufferedReader(new FileReader(file));
 				String line = null;
 				while ((line = reader.readLine()) != null) {
+					if(!line.trim().isEmpty() && line.trim().charAt(0) == '#') continue;
 					System.out.format("%s %s%n", line, responseCode(line));
 				}
 			} else {
