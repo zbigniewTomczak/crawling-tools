@@ -10,10 +10,7 @@ import java.net.UnknownHostException;
 
 public class ResponseCode {
 	public static String responseCode(String urlString) throws IOException {
-		urlString = urlString.trim();
-		if (!urlString.startsWith("http://")) {
-			urlString = "http://" + urlString;
-		}
+		urlString = Util.correctAddress(urlString);
 		URL url = null;
 		try {
 			url = new URL(urlString);
